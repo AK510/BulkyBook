@@ -14,7 +14,7 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            IEnumerable<CoverType> objectCoverTypeList = _unitOfWork.CoverType.GetAll(null);
+            IEnumerable<CoverType> objectCoverTypeList = _unitOfWork.CoverType.GetAll();
             return View(objectCoverTypeList);
         }
 
@@ -31,7 +31,7 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 _unitOfWork.CoverType.Add(obj);
-                _unitOfWork.CoverType.Save();
+                _unitOfWork.Save();
                 TempData["success"] = "Cover Type Added Successfully!";
                 return RedirectToAction("Index");
             }
@@ -44,7 +44,7 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            var covertype = _unitOfWork.CoverType.GetFirstOrDefault(c => c.Id == id, null);
+            var covertype = _unitOfWork.CoverType.GetFirstOrDefault(c => c.Id == id);
             if (covertype == null)
             {
                 return NotFound();
@@ -59,7 +59,7 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 _unitOfWork.CoverType.Update(obj);
-                _unitOfWork.CoverType.Save();
+                _unitOfWork.Save();
                 TempData["success"] = "Cover Type Edited Successfully!";
                 return RedirectToAction("Index");
             }
@@ -72,7 +72,7 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            var coverType = _unitOfWork.CoverType.GetFirstOrDefault(c => c.Id == id, null);
+            var coverType = _unitOfWork.CoverType.GetFirstOrDefault(c => c.Id == id);
             if (coverType == null)
             {
                 return NotFound();
@@ -84,13 +84,13 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
         [AutoValidateAntiforgeryToken]
         public IActionResult DeletePOST(int? id)
         {
-            var obj = _unitOfWork.CoverType.GetFirstOrDefault(c => c.Id == id, null);
+            var obj = _unitOfWork.CoverType.GetFirstOrDefault(c => c.Id == id);
             if (obj == null)
             {
                 return NotFound();
             }
             _unitOfWork.CoverType.Remove(obj);
-            _unitOfWork.CoverType.Save();
+            _unitOfWork.Save();
             TempData["success"] = "Cover Type Deleted Successfully!";
             return RedirectToAction("Index");
         }

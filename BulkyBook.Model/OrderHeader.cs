@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BulkyBook.Model
+namespace BulkyBook.Models
 {
 	public class OrderHeader
 	{

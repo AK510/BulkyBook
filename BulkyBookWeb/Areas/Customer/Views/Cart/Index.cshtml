@@ -1,4 +1,4 @@
-﻿@model BulkyBook.Models.ViewModel.ShoppingCartVM
+﻿@model BulkyBook.Models.ViewModels.ShoppingCartVM
 
 <form method="post">
 	<br />
@@ -26,7 +26,7 @@
 						<div class="col-12 col-lg-6 pt-md-5">
 							<h5><strong>@item.Product.Title</strong></h5>
 						</div>
-						<div class="col-12  col-lg-5 text-center row">
+						<div class="col-12  col-lg-5 text-center row">	
 							<div class="col-4 text-md-right pt-4">
 								<h6><strong>@item.Price.ToString("c") <span class="text-muted">x</span> @item.Count </strong></h6>
 							</div>
@@ -56,7 +56,7 @@
 						<ul class="list-group">
 							<li class="list-group-item d-flex justify-content-between bg-light">
 								<span class="text-info"> Total (INR)</span>
-								<strong class="text-info">@Model.CartTotal.ToString("C")</strong>
+								<strong class="text-info">@Model.OrderHeader.OrderTotal.ToString("C")</strong>
 							</li>
 						</ul>
 					</div>

@@ -28,7 +28,7 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
             }
             else
             {
-                company = _unitOfWork.Company.GetFirstOrDefault(u => u.Id == id, null);
+                company = _unitOfWork.Company.GetFirstOrDefault(u => u.Id == id);
                 return View(company);
             }
         }
@@ -60,14 +60,14 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
         #region API CALL
         public IActionResult GetAll()
         {
-            var companyList = _unitOfWork.Company.GetAll(null);
+            var companyList = _unitOfWork.Company.GetAll();
             return Json(new { data = companyList });
         }
 
         [HttpDelete]
         public IActionResult Delete(int? id)
         {
-            var obj = _unitOfWork.Company.GetFirstOrDefault(c => c.Id == id, null);
+            var obj = _unitOfWork.Company.GetFirstOrDefault(c => c.Id == id);
             if (obj == null)
             {
                 return Json(new { success = false, message = "Error While Deleting!" });

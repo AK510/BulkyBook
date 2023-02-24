@@ -1,5 +1,5 @@
 ﻿using BulkyBook.DataAccess.Repository.IRepository;
-using BulkyBook.Models.ViewModel;
+using BulkyBook.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -27,13 +27,13 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
             ProductVM productVM = new()
             {
                 Product = new(),
-                CategoryList = _unitOfWork.Category.GetAll(null).Select(
+                CategoryList = _unitOfWork.Category.GetAll().Select(
                     u => new SelectListItem
                     {
                         Text = u.Name,
                         Value = u.Id.ToString()
                     }),
-                CoverTypeList = _unitOfWork.CoverType.GetAll(null).Select(
+                CoverTypeList = _unitOfWork.CoverType.GetAll().Select(
                     u => new SelectListItem
                     {
                         Text = u.Name,
@@ -48,7 +48,7 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
             else
             {
                 //Update
-                productVM.Product = _unitOfWork.Product.GetFirstOrDefault(u => u.Id == id, null);
+                productVM.Product = _unitOfWork.Product.GetFirstOrDefault(u => u.Id == id);
                 return View(productVM);
             }
         }
@@ -104,7 +104,7 @@ namespace BulkyBookWeb.Areas.Admin.Controllers
         [HttpDelete]
         public IActionResult Delete(int? id)
         {
-            var obj = _unitOfWork.Product.GetFirstOrDefault(c => c.Id == id, null);
+            var obj = _unitOfWork.Product.GetFirstOrDefault(c => c.Id == id);
             if (obj == null)
             {
                 return Json(new { success = false, message = "Error While Deleting!" });

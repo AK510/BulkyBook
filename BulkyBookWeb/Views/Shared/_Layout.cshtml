@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -28,14 +28,18 @@
                             <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Content Management</a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" asp-area="Admin" asp-controller="Category" asp-action="Index">Category</a>
+                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" asp-area="Admin" asp-controller="CoverType" asp-action="Index">Cover Type</a>
+                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" asp-area="Admin" asp-controller="Product" asp-action="Index">Product</a>
+                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" asp-area="Admin" asp-controller="Company" asp-action="Index">Company</a>
                                 <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" asp-area="Admin" asp-controller="Order" asp-action="Index">Manage Order</a>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a asp-area="Customer" asp-controller="Cart" asp-action="Index"><i class="bi bi-cart-check"></i></a>
+                            <a class="nav-link text-light" asp-area="Customer" asp-controller="Cart" asp-action="Index"><i class="bi bi-cart-check"></i></a>
                         </li>
                     </ul>
                     <partial name="_loginPartial" />
