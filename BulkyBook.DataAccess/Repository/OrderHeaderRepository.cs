@@ -12,7 +12,7 @@ namespace BulkyBook.DataAccess.Repository
             _db = db;
         }
 
-		public void UpateStatus(int id, string status, string? paymentStatus)
+		public void UpdateStatus(int id, string status, string? paymentStatus)
 		{
 			var orderObj = _db.OrderHeader.FirstOrDefault(u => u.Id == id);
 			if(orderObj != null)
@@ -33,6 +33,7 @@ namespace BulkyBook.DataAccess.Repository
 		public void UpdateStripePaymentID(int id, string sessionId, string paymentIntentId)
 		{
 			var orderObj = _db.OrderHeader.FirstOrDefault(u => u.Id == id);
+			orderObj.PaymentDate = DateTime.Now;
 			orderObj.SessionId = sessionId;
 			orderObj.PaymentIntentId= paymentIntentId;
 		}

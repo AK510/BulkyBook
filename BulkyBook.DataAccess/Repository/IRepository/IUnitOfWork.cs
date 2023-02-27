@@ -9,7 +9,7 @@
         IApplicationUserRepository ApplicationUser { get; }
         IShoppingCartRepository ShoppingCart { get; }
         IOrderHeaderRepository OrderHeader { get; }
-        IOrderDetailsRepository OrderDetails { get; }
+        IOrderDetailsRepository OrderDetail { get; }
 
         void Save();
     }

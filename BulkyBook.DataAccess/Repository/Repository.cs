@@ -38,9 +38,18 @@ namespace BulkyBook.DataAccess.Repository
             return query.ToList();
         }
 
-        public T GetFirstOrDefault(Expression<Func<T, bool>> filter, string? includeProperty = null)
+        public T GetFirstOrDefault(Expression<Func<T, bool>> filter, string? includeProperty = null, bool tracked = true)
         {
-            IQueryable<T> query = dbSet.Where(filter);
+            IQueryable<T> query;
+            if (tracked)
+            {
+                query = dbSet;
+            }
+            else
+            {
+                query = dbSet.AsNoTracking();
+            }
+            query = query.Where(filter);
             if (includeProperty != null)
             {
                 foreach (var incprop in includeProperty.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
@@ -50,6 +59,8 @@ namespace BulkyBook.DataAccess.Repository
             }
             return query.FirstOrDefault();
         }
+
+
 
         public void Remove(T item)
         {

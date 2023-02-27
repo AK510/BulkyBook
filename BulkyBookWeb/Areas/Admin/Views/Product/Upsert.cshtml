@@ -111,17 +111,17 @@
         { value: 'Email', title: 'Email' },
       ]
     });
-        function ValidateFile(){
-            if (document.getElementById("uploadBox").value==""){
-                Swal.fire({
-                  icon: 'error',
-                  title: 'Upload Image...',
-                  text: 'Please Upload Image of Book!',
-                })
-                return false;
-            }
-            return true;
+    function ValidateFile(){
+        if (document.getElementById("uploadBox").value==""){
+            Swal.fire({
+                icon: 'error',
+                title: 'Upload Image...',
+                text: 'Please Upload Image of Book!',
+            })
+            return false;
         }
+        return true;
+    }
 
     </script>
 }

@@ -9,6 +9,6 @@ namespace BulkyBook.Models.ViewModels
 	public class OrderVM
 	{
 		public OrderHeader OrderHeader { get; set; }
-		IEnumerable<OrderDetail> OrderDetail { get;set; }
+		public IEnumerable<OrderDetail> OrderDetail { get;set; }
 	}
 }
